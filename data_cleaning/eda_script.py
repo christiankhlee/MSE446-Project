@@ -198,17 +198,4 @@ for col in key_features:
 total_outliers = sum(outlier_counts.values())
 print(f"  Total outliers: {total_outliers} ({total_outliers/len(df)*100:.1f}% of data)")
 
-print("\n" + "=" * 60)
-print("RECOMMENDATIONS FOR MODELING")
-print("=" * 60)
-print("1. ✅ Dataset is clean and ready for modeling")
-print("2. ✅ Good sample size (920 samples) for your project")
-print("3. ✅ Reasonable class balance")
-print(f"4. 🔍 Top predictive features: {', '.join(target_corr.head(3).index)}")
-print("5. 📊 Use stratified k-fold CV to maintain class balance")
-print("6. 🎯 Start with Logistic Regression baseline")
-print("7. 🌲 Try Random Forest (good with mixed data types)")
-print("8. ⚖️ Consider feature scaling for distance-based models")
-
 print(f"\nAll plots saved in 'eda_plots/' directory")
-print("Next: Run train/test split and start modeling!")

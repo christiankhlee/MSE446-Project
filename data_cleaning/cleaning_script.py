@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-# Load your data
+# Load data
 df = pd.read_csv('heart.csv')  # Adjust filename as needed
 
 print("=" * 60)
@@ -31,23 +31,12 @@ print("\n" + "=" * 60)
 print("DATA CLEANING STRATEGY")
 print("=" * 60)
 
-# Strategy based on your missing data:
-# - ca: 611/920 = 66% missing - MAJOR ISSUE
-# - thal: 486/920 = 53% missing - MAJOR ISSUE  
-# - slope: 309/920 = 34% missing - SIGNIFICANT
-# - oldpeak, thalch, exang, trestbps, chol, fbs: <10% missing - MANAGEABLE
-
 # Step 1: Handle columns with extreme missing values
 print("Step 1: Handling columns with >50% missing values")
 print("- ca: 66.4% missing")
 print("- thal: 52.8% missing")
 print("- slope: 33.6% missing")
 
-# Option A: Drop these columns entirely
-# Option B: Create binary indicators for missing + impute
-# Option C: Use only complete cases for these features
-
-# Let's first see what datasets you have
 print(f"\nDatasets included: {df['dataset'].value_counts()}")
 print(f"\nTarget variable distribution: {df['num'].value_counts()}")
 
@@ -166,16 +155,3 @@ numeric_corr = df_clean[numeric_features + ['target']].corr()['target'].sort_val
 print(f"\nTop features correlated with heart disease:")
 print(numeric_corr[:-1].head(10))  # Exclude target itself
 
-print("\n" + "=" * 60)
-print("NEXT STEPS")
-print("=" * 60)
-print("1. Review the cleaned dataset (heart_cleaned.csv)")
-print("2. Run EDA visualizations")
-print("3. Consider feature selection based on correlations")
-print("4. Split data for training/testing") 
-print("5. Scale features before modeling")
-print("\nRecommended modeling approach:")
-print("- Start with Logistic Regression (baseline)")
-print("- Try Random Forest (handles mixed features well)")
-print("- Consider ensemble methods")
-print(f"- Use stratified k-fold CV (you have {len(df_clean)} samples)")
